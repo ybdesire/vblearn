@@ -1,0 +1,186 @@
+
+1. 编程风格
+
+（1）不属于语法问题，全球统一个格式化写法
+
+（2）方便阅读
+
+（3）缩进4个空格/1个tab
+
+
+Private Sub Command1_Click()
+    If Len(Text1.Text) <> 8 Then
+        MsgBox "输入的用户名不是8个字符", , "重新输入"
+    End If
+    
+    If Len(Text2.Text) <> 6 Then
+        MsgBox "你输入的密码中不是6个字符", , "重新输入"
+    End If
+    
+    If IsNumeric(Text2.Text) = False Then
+        MsgBox "你输入的密码中含有非数字的字符", , "重新输入"
+    End If
+    
+    Dim a As String
+    
+    If Len(Text1.Text) = 8 And Len(Text2.Text) = 6 And IsNumeric(Text2.Text) = True Then
+        a = InputBox("转账金额", "输入转账金额")
+        Print a
+    End If
+End Sub
+
+
+
+2. 结构化编程思路
+
+t = max(a,b,c)
+m = max(d,e,f)
+max(t,m)
+
+
+3. 
+
+
+If  Ucase(strC) >="A"  And Ucase (strC) <="Z" Then  	
+    Print  strC + "是字母字符" 
+ElseIf strC >="0"  And strC <="9"  Then		            	
+    Print  strC + "是数字字符" 
+ElseIf <cond3>  Then		            	
+    Print  strC + "是数字字符" 
+ElseIf <cond4>  Then		            	
+    Print  strC + "是数字字符" 
+Else						     	
+    Print  strC + "其他字符" 
+End If
+
+
+4. 嵌套if
+
+
+If  x<y Then t=x: x=y: y=t 'x>y  x=5 y =2
+    If  y<z Then            
+          t=y: y=z: z=t    'y>z     , y =6, z=2         
+          If  x<y  Then                
+             t=x: x=y: y=t
+         End If
+     End If
+
+
+5. 练习
+
+分段函数：
+
+x>=0 and x<=1, 2x+4
+x>1 and x<=2, 3x+4
+x>2 and x<=10, x*x
+x>10         , x*x*x
+x<0         ,  x
+
+
+6. Select Case语句(情况语句)
+
+(1) Select Case属于“分支”
+(2) 所有“分支”，都可以由if语句来做到
+
+
+Select Case  strC
+Case "a" To "z"，"A" To "Z"
+    Print  strC + "是字母字符"
+Case "0" To "9"
+    Print  strC + "是数字字符"
+Case Else
+    Print  strC + "其他字符"
+End Select
+
+最常用的，是case后只有一个值
+
+Dim x As Integer
+x = 1
+Select Case x
+Case 1
+    Print "x is 1"
+Case 2
+    Print "x is 2"
+Case 3
+    Print "x is 3"
+Case Else
+    Print "else"
+End Select
+
+
+7.条件函数
+
+
+(1) IIF
+
+     IIf（表达式，当表达式为True时的值，当表达式为False时的值）
+     例如，求x,y中大的数，放入Tmax变量中，语句如下：
+           Tmax=IIf（x > y，x，y）
+
+
+(2) Choose
+    Nop = 3
+    Op= Choose（Nop，"+"，"-"，"×"，"÷"）
+
+
+8. 计算机编程最重要的两种语句
+（1）分支语句： if
+（2）循环语句：loop
+
+
+9. for循环
+
+For i = 1 To 100 Step 1
+    If (i Mod 2 = 1) Then
+        s = s + i
+    End If
+Next i
+
+
+10. Do While循环
+
+x=1
+Do While x <= 100
+    print x
+    x=x+1
+Loop
+
+区别
+
+Do
+        Print x
+        x = x + 1
+Loop While x <= 5
+
+
+1～100的5或7的倍数的和 
+
+5: 5, 10, 15, 20, ..., 100
+7: 7, 14, 21, ...., 98
+
+
+
+
+
+
+习题：
+
+1. 给定任意两个数a,b(a<b)
+
+计算：a*(a+1)*(a+2)*....*(b)
+
+a = 2
+b = 8
+
+s = 2*3*4*5*6*7*8
+
+2. 迭代公式计算pi值：https://www.zhihu.com/question/20756479
+
+
+
+
+
+
+
+
+

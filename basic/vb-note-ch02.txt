@@ -1,0 +1,555 @@
+ch02
+
+1. 结构化程序设计
+(1) 计算机程序执行：一行一行从上往下
+(2) 代码块
+(3) 事件触发型：click,timer,press_key
+
+
+考题：
+一个程序有5个代码块，从上到下一个代码块一个代码块的执行？（F）
+- 如果没有事件触发，则这个代码块永远不会自动执行
+
+
+2. 面向对象（OOP，object oriented programming）
+
+(1) 类
+--是一种规则，是创建对象的规则
+--规定了对象的 属性 和 行为
+
+(2) 对象
+-- 类的实例
+-- 属性：颜色
+-- 行为：click
+
+
+3. VB对象的三要素
+（1）属性  
+（2）方法
+（3）事件: clik, press_key, drag
+
+
+4. Button
+
+(1) name: 
+(2) caption: 
+
+5. 工程文件包含了一个应用程序的所有文件:
+工程文件（工程1.vbp）：管理我们整个VB工程
+窗体文件(.frm)：控件及属性、事件过程和自定义过程;	
+
+6. 错误类型
+（1）编辑错误：出错的那一行变成红色，VB6可以及时提醒你错误
+（2）编译错误
+--写程序时，不提醒；
+--运行时，提醒错误；
+--类错误由于用户未定义变量、遗漏关键字等原因产生
+（3）运行错误
+-- 例如类型不匹配、试图打开一个不存在的文件等。
+-- run-time error, 实时错误
+-- 计算结果溢出
+（4）逻辑错误
+
+
+
+7. 调试（debug）
+- 目的：对程序查错
+- 原理：让程序中断在某个语句，一行一行执行，查看各个变量的中间结果
+- 如何用：
+（1）打断点，直接运行
+（2）逐过程/逐语句
+
+
+CH03
+1. VB代码不区分字母的大小写
+
+print "hello"
+PRINT "hello"
+Print "hello"
+
+2. 语句书写自由
+(1) 一行可书写几句语句,之间用冒号分隔；
+Dim a As Integer: Dim b As Integer: Dim c As Integer
+(2)   一句语句可分若干行书写，用续行符_连接
+（2.1）b=a+1-b
+b = a + _
+1 - b
+
+(2.2) Dim a As Integer
+Dim a As _
+Integer
+
+(3)一行<=255个 字符(字母，数字，符号，空格)
+
+3. 注释
+（1）写一些说明性的解释
+（2）注释不参与程序运行
+Rem开始 或 单撇号 '
+
+
+4. 定义变量
+
+Dim a As Integer
+
+Dim a%
+
+5. 不同类型的区别
+（1）数据表示精度/范围不同
+（2）Integer: -32768~32767
+（3）Long: -212345667~212345668
+（4）Double：小数
+（5）String：字符串
+-- text
+-- 文本
+-- 多个字符组成的一串内容
+-- 字符(字母，数字，符号，空格)
+
+
+6. 变量：在程序运行中其存储的值可以改变。
+-- 相当于一个小盒子
+-- Dim a As Integer
+   -- 定义一个变量，变量的名字叫做a，变量类型是integer
+
+7. 常量：在程序运行中其值不可以改变。
+
+
+8. 变量命名规则
+
+（1）以字母或汉字开头，后可跟汉字、字母、数字或下划线组成，长度小于等于255个字符；
+
+下列哪些变量命名是正确的：A,B,D
+
+A hello
+B x1
+C 1x (不能以数字开头)
+D x_1
+E _x1 （不能以下划线开头）
+F x*&76 （不能包括特殊符号）
+
+（2） 不要使用VB中的关键字；
+https://wenku.baidu.com/view/e4b04a23a2161479171128ba.html
+下列哪些变量命名是正确的：A
+A ifme
+B IF
+C eRROR
+
+（3）VB中不区分变量名的大小写；
+
+
+（4）为了增加程序的可读性，可在变量名前加一个缩写的前缀来表明该变量的数据类型。
+-- 编程规范
+-- 你不这样写，也没问题
+-- 最好这样写，国际统一
+-- 变量名字有很好的含义
+
+
+Dim iPassword As Integer
+
+Dim i As Integer (语法正确，但是这种写法不好)
+
+
+9. 用Dim语句显式声明变量
+
+两种写法
+根据关键字定义变量
+（1）Dim  iCount  As  integer , sAllsum  As  single
+根据类型符定义变量
+（2）Dim iCount%, sAllsum！
+
+
+（3）常用类型符
+-- Integer, %
+-- Single, !
+-- Double, #
+-- String, $
+
+
+10. 声明常量
+
+规则：
+Const 常量名 [AS 类型] = 表达式
+
+例子：
+Const  MAX=100
+Const MAX AS Integer = 100
+
+用在哪？（pi=3.14）
+
+为使与变量名区分，一般常量名使用大写字母。
+-- 编程规范
+
+a = MAX*3.5-MIN
+
+
+11. 系统提供的常量
+    系统定义常量位于对象库中，可通过“对象浏览器”查看。
+        例：vbCrLf等
+输出回车的例子：
+Print "hello" & " my vb" & vbCrLf & " project"
+
+通过视图-对象浏览器，查看系统定义的常量
+
+12. 运算符
+
+（1）^, 2^3=8
+（2）\，整除（把除法结果中的小数部分去掉，不是四舍五入），2\3=0
+（3）Mod，取余数，5 mod 3：5除以3，商为1，余数为2
+
+13. 字符串运算符
+（1）＆ 、+   字符串连接
+    " 123 " + " 456 "  结果 " 123456 " 
+    " 123 " & " 456 " 结果 " 123456 "
+
+（2） 区别：+ 两边必须是字符串，& 不一定[optional]
+ 例如：
+ "abcdef" & 12345           ' 结果为 "abcdef12345 "
+ "abcdef " + 12345           ' 出错
+ "123" &  456                   ' 结果为" 123456 "
+ “123” +  456                 ' 结果为  579
+
+
+（3）注意：[optional]
+  "123 " +  True               ' 结果为  122
+  True转换为数值-1，False转换为数值0  
+
+
+ppt 44 page
+
+
+
+习题
+
+1. “999” +  666结果会怎么样？
+
+2. 计算圆形面积的程序（button click then print result）
+r = 3
+print area
+
+两种写法：根据关键字定义变量，根据类型符定义变量
+
+3. 把 用户登陆界面 调好看一点
+（1）button和label，text的大小适中
+（2）Form加背景颜色
+（3）button上字体，大小，颜色
+
+
+
+
+
+14. 关系运算符
+
+(1) 所有关系运算符的结果，只能是True或者False
+
+print 1>2  'False (数字的比较)
+
+(2) 
+>
+<
+=：等于
+>=
+<=
+<>:不等于
+
+(3) 字符串的比较
+
+print "a">"b"   'False
+print "abc">"aba"   'True
+print "a">"aba"   '
+
+(4)  True转换为数值-1，False转换为数值0  
+
+
+Dim a As Integer
+Dim b As Integer
+Dim c As Integer
+
+a = 4
+b = 6
+c = a > b
+Print c '0
+
+
+Dim a As Integer
+Dim b As Integer
+Dim c As Boolean
+
+a = 4
+b = 6
+c = a > b
+Print c 'False
+
+
+15. 逻辑运算符
+
+
+(1) 
+与       And
+或       Or
+非       Not
+异或      Xor
+
+(2) 所有运算符的结果，只能是True或者False
+
+
+（3）And
+
+x And y
+-- x=True, y=True -> True
+
+
+
+
+
+Dim a As Integer
+Dim b As Integer
+Dim c As Boolean
+
+a = 4
+b = 6
+c = False
+Print c And a < b       'False
+
+
+
+（4）Or
+
+x Or y
+-- x=True, y=True -> True
+-- x=True, y=False -> True
+-- x=False, y=True -> True
+-- x=False, y=False -> False
+
+
+(5) Not
+
+Not x
+-- x=True -> False
+
+
+(6) Xor: 异或（相同为False，相异为True）
+
+-- x=True, y=True -> False
+-- x=True, y=False -> True
+-- x=False, y=True -> True
+-- x=False, y=False -> False
+
+16. 表达式
+
+  (1) 运算符不能相邻。例a+ -b是错误的。
+a+ （-b）
+
+(2) 乘号不能省略。例x 乘以y 应写成：x*y。
+
+
+（3）运算结果的数据类型向精度高的数据类型靠。
+       Integer<Long<Single<Double<Currency
+
+ 2.5 * 4  -> 2.5*4.0
+
+
+(4) 表达式举例
+
+    sin(45*3.14/180)+(exp(10)+log(10))/sqr(x+y+1)
+
+--log运算
+log(x) = log(e)(x) 
+log(2)(8) -> Log(8) / Log(2) = 3
+
+--次方
+c = 2 ^ 0.5
+c = Sqr(2)
+
+--Sin(90 * 3.14 / 180)
+
+
+
+a=25
+b=5
+c=6
+
+d = a<40 and b=5 and (c=7 or c=8)   'False
+
+d = a<40 and b=5 and c=7 or c=8     'False
+
+
+17. 常用内部函数
+
+(1) 随机数
+
+Rnd:生成0~1之间的小数（包括0但不包括1）
+
+用法：
+print Rnd
+
+例子：生成1~100之间的整数
+  Int(Rnd *100)+1
+
+
+例子：生成10~50之间的随机整数（包括10和50）
+ Int(Rnd *41)+10
+
+
+(2) 把整数转换为字符（根据ASCII码来转换）
+
+Chr(66)："B"
+
+
+(3)把字符转换为整数（根据ASCII码来转换）
+
+Asc ("B") -> 66
+
+(4)小写 大写 转换
+
+UCase$("abcdefg")' 小写转换为大写
+LCase("ASDFfg ")
+
+
+
+(5)时间和日期
+
+
+Time返回系统时间：时分秒
+Date返回系统日期：年月日
+Now返回系统日期和时间 ： 年月日 时分秒
+
+Print Time
+Print Date
+Print Now
+
+
+(6)IsNumeric
+Print IsNumeric("hello123") 'False
+Print IsNumeric("123")      'True
+
+
+18. 字符串编码
+* 英文默认是ASCII编码，但在VB中是统一为Unicode编码
+* 中文2字节，西文1字节
+* VB中字符Unicode编码，任何字符2字节。 
+        Len(“中国good ”)为6；LenB(“中国good ”)为12。
+
+19. 字符串函数
+
+（1）取子字符串函数
+ Mid$("ABCDEFG", 2, 3)
+ * 从某个位置开始，数n位，得到一个新的字符串
+ * BCD
+
+（2）判断某个字符串中，是否含有另一个字符串
+
+InStr(2, "ABCDEFG", "EF")
+-- 2个字符判断
+-- EF在ABCDEFG中，首次出现的位置是5
+
+
+（3）根据某个string，对字符串做split（分割）
+
+Print Split("123,56,ab", ",")(0)
+Print Split("123,56,ab", ",")(1)
+Print Split("123,56,ab", ",")(2)
+
+
+（4）字符串替换
+
+    Replace("ABCDABCD","CD","123")
+
+20. Format，对时间和日期输出格式进行调整
+
+Print Time
+Print Format(Time, "h-m-s AM/PM")
+
+
+
+CH04 基本的控制结构
+
+1. 赋值语句
+
+x = 40
+
+2. InputBox函数
+
+InputBox(提示[，标题][，缺省][，x 坐标位置][，y坐标位置])
+
+
+例子：
+Dim  strName  As  String
+strName= InputBox("please input your name" + vbCrLf + "Then click ok" , "input box" )
+
+
+3. MsgBox函数
+
+(1)提示信息
+MsgBox("syntax error!")
+
+(2)修改MsgBox的布局
+Dim ms As String
+ms = MsgBox("syntax error!", vbYesNo)
+
+(3)MsgBox上显示的图标
+
+Dim ms As String
+ms = MsgBox("syntax error!", vbYesNo + vbExclamation)
+
+
+4. If语句
+（1）数据交换
+例：已知两个数x和y，比较它们的大小，如果x<y，则交换x与y中的数据，使得x大于y.
+If  x<y Then
+  t=x
+  x=y
+  y=t
+End If
+
+5. if esle语句(if then else)
+
+If  x<>0 Then
+     y=sin(x)+sqr (x*x+1)
+Else
+     y=cos(x)－x^3+3*x
+End If
+
+
+ppt 62 page
+
+
+习题：
+
+1. 用户名，密码，登陆认证
+
+（1）输入的用户名必须是8个字符
+--Len
+
+（2）输入的密码必须是6个数字
+--Len
+--IsNumeric
+
+（3）如果用户输入错误，就弹出一个MsgBox提示用户错在哪里
+--输入的用户名不是8个字符
+--你输入的密码中含有非数字的字符
+--你输入的密码中不是6个字符
+
+（4）如果输入正确（满足条件1和2），则弹出 InputBox，提示用户输入转账金额
+-- print转账金额
+
+
+2. 输入两个数，把最大的一个数，print出来
+
+写死
+a = 5
+b = 6
+
+
+3. (附加题)输入3/4/5个数，把最大的一个数，print出来
+
+
+
+
+
+
+
+
+
+
+
+
+         
