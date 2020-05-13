@@ -1,0 +1,233 @@
+题目讲解
+
+
+习题：
+
+1. 给定任意两个数a,b(a<b)
+
+计算：a*(a+1)*(a+2)*....*(b)
+
+a = 2
+b = 8
+
+s = 2*3*4*5*6*7*8
+
+2. 迭代公式计算pi值：https://www.zhihu.com/question/20756479
+
+
+
+
+
+
+04
+
+1. 程序测试
+（1）给定正常数据
+（2）比较大的数据
+（3）异常/边界  a*(a+1)*(a+2)*....*(b)
+a>=b
+
+
+11行：
+If b = a + 1 Then
+    s = a * b
+    Print s
+Else
+    p = a * (a + 1)
+    For i = a + 2 To b Step 1
+        s = p * i
+        p = s
+    Next i
+    Print s
+End If
+
+
+
+5行：
+s = 1
+For i = a To b Step 1
+    s = s * i
+Next i
+Print s
+
+
+--------------------------------------------------------------------
+
+第五章   数组
+
+
+1. 练习
+
+输入5个学生成绩，求平均分，求出有多少个人的成绩高于平均分？
+
+
+2. 静态数组
+
+（1）声明
+
+Dim mark(1 to 100) As Integer
+
+* 声明一个数组：有小括号对，小括号里面有x to y
+* 这个数组的类型是Integer
+* 数组上界100，下界1
+
+Dim a(100) As Integer
+* 上界100，下界0
+
+
+（2）赋值
+
+Dim a(1 To 100) As Integer
+
+For i = 1 To 100 Step 1
+    a(i) = 6
+Next i
+
+
+
+练习：声明一个数组，名字叫arr，数组为Double类型，数组的上下界为1~100，
+数组内部的数据为：1.1，1.2，1.3，1.4，。。。。。，11
+
+
+（3）如何显示数组中的每一个数？
+
+必须用循环来print每一个数
+
+
+（4）数组下标：a(i), i
+
+
+（5）获取数组上界，下界的函数：  Ubound 、Lbound函数
+
+
+（6）二维数组
+
+Dim a(4,4) As Integer
+Dim a(0 to 4,0 to 4) As Integer
+
+二维矩阵：5x5矩阵
+
+
+
+Dim a(3, 4) As Integer
+Dim row As Integer
+Dim col As Integer
+Dim k As Integer
+
+k = 1
+
+
+For row = 0 To 3 Step 1
+    For col = 0 To 4 Step 1
+        a(row, col) = k
+        k = k + 1
+    Next col
+Next row
+
+
+Print a(1, 1)‘7
+Print a(3, 3)’19
+
+
+练习：写一个二维矩阵3x4，第一列值全为1， 第二列值全为2
+
+
+3. 动态数组
+
+（1）静态数组：数组中的数据个数固定，不能修改
+（2）动态数组如何声明
+
+Dim a() As Integer      '声明数组时，不指定数组大小
+n = InputBox("array-length")
+ReDim a(n)              '重新指定数组大小
+
+（3）ReDim会擦除数组中的所有原始数据
+
+Dim a() As Integer
+n1 = 5
+ReDim a(n1)
+
+a(0) = 10
+a(1) = 11
+a(2) = 12
+
+n2 = 8
+ReDim a(n2)
+
+
+Print a(0)  '0
+Print a(1)  '0
+
+
+（4）如何让ReDim不擦除数组中的原始数据：
+
+ReDim Preserve a(n2)
+
+
+4. 数组的常见用法
+
+（1）用variant和Array()函数来定义数组
+Dim b As Variant
+b = Array(1, 2, 3, 4, 5, 6)
+Print b(2)
+
+（2）求一个数组中的最大值
+
+Dim b As Variant
+b = Array(6, 2, -6, 4, 5, -6)
+
+Dim max As Integer
+max = b(0)
+
+For i = 0 To 5 Step 1
+    If max < b(i) Then
+        max = b(i)
+    End If
+Next i
+
+Print max
+
+
+
+
+
+讲到ppt102页
+
+
+习题：
+
+1. 定义两个二维数组（都是3x6）, 初始化为
+
+a
+1 2 3 4 5 6
+2 3 4 5 6 7
+3 4 5 6 7 8
+
+b
+1 2 3 4 5 6 7
+1 2 3 4 5 6 7
+1 2 3 4 5 6 7
+
+计算数组的加法，c=a+b
+
+2 4 6 ....
+....
+
+
+2. 求数组的最小值，以及最小值所在的位置
+
+Dim b As Variant
+b = Array(6, 2, -6, 4, 5, -6)
+
+
+3. 输入一个数，判断这个数是否在数组中
+
+Dim b As Variant
+b = Array(6, 2, -6, 4, 5, -6)
+
+如果在数组中，则输出这个数在数组中的位置
+否则，提示用户，这个数不在数组中
+
+
+
+
