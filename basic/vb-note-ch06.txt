@@ -1,0 +1,203 @@
+
+1. Array的用法
+
+Dim a() As Variant
+a = Array(2, 4, 6, 8, 6, 5, 3, 7)
+
+
+2. 用Ubound函数，能把程序写得更灵活
+（习题 1. 给定一个数组 a = [2,4,6,8,6,5,3,7]，求a中第三大的数据）
+Private Sub Form_Click()
+Dim i As Integer
+Dim j As Integer
+Dim x As Integer
+Dim a() As Variant
+
+
+a = Array(2, 4, 6, 8, 6, 5, 3, 7, 9, 10, 11, 12)
+
+
+For i = 0 To 3 Step 1
+    For j = 0 To UBound(a) - i - 1 Step 1
+        If a(j) > a(j + 1) Then
+            t = a(j)
+            a(j) = a(j + 1)
+            a(j + 1) = t
+            
+        End If
+    Next j
+Next i
+
+Print a(UBound(a) - 2)
+
+End Sub
+
+
+3. 数组越界
+
+
+
+4. 练习：给你一个数组：1,3,6,2,4,7; 把数组中的数据6删除
+
+5. 数组的缺点：
+- 往数组中 插入或者删除 数据，需要涉及到数据移动，比较复杂
+
+6 . 数组常见问题
+0
+（1）.静态数组声明下标出现变量
+   n = InputBox("输入数组的上界")
+  Dim a(1 To n) As Integer
+
+  Dim a(1 To 5) As Integer
+
+（2）．数组下标越界
+   引用的下标比数组声明时的下标范围大或小。
+      Dim a(1 To 30) As Long, i%
+      a(1) = 1: a(2) = 1
+      For i = 2 To 30           
+          a(i) = a(i - 2) + a(i - 1)   a(0)不存在
+      Next i
+（3）．数组维数错
+   数组声明时的维数与引用数组元素时的维数不一致。
+     Dim a(3, 5) As Long
+         a(i)=10
+（4）．Aarry函数与Split函数使用问题
+   只能对Variant 的变量或动态数组赋值。
+（5）．获得数组的上界、下界
+   Ubound 、Lbound函数
+
+
+第六章   过    程
+
+1. function定义
+
+（1）工具->添加过程
+
+（2）没有参数，没有返回值
+
+Private Sub Form_Click()
+    myfun
+End Sub
+
+
+Public Function myfun()
+    Print "hello my func"
+End Function
+
+（3）有1个参数，没有返回值
+
+Private Sub Form_Click()
+    myfun (7)
+End Sub
+
+Public Function myfun(x As Integer)
+    Print "hello my func "
+    Print x
+    
+End Function
+
+
+
+
+
+（4）有参数，有返回值
+
+Private Function myfun(x As Integer) As Integer
+    Print "hello my func "
+    Print x
+    myfun = 666
+End Function
+
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    x = 7
+    y = myfun(x)
+    Print y
+End Sub
+
+
+（5）有多个参数，有返回值
+Private Function myfun(x%, y%) As Integer
+    myfun = x + y
+End Function
+
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    Dim z As Integer
+    
+    x = 2
+    y = 4
+    z = myfun(x, y)
+    Print z
+End Sub
+
+
+练习：写一个函数，输入参数为x，返回值为1+2+3+...+x的值
+
+
+
+
+
+（6）有参数，有返回值，简写
+
+Private Function myfun(x%) As Integer
+相当于
+Private Function myfun(x As Integer) As Integer
+
+
+（7）练习：写一个函数myMin，参数为两个integer x,y 
+返回最小值
+
+
+Private Function mymin(x%, y%) As Integer
+    If x < y Then
+        mymin = x
+    Else
+        mymin = y
+    End If
+End Function
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    Dim z As Integer
+    
+    x = 2
+    y = 4
+    Print mymin(x, y)
+End Sub
+
+
+（8）使用函数，来完成3个数求最值
+法一：
+x = mymin(x, y)
+y = z
+x = mymin(x,y)
+法二：
+x = mymin( mymin(x,y), z)
+
+
+（9）定义一个函数，my3min(x%, y%, z%)要求这个函数中不能用到if
+
+
+习题：
+1. 写一个函数，isPrime(x%) as Ingeter 
+* 如果输入的x为质数，则返回1，否则返回0
+* 质数：只有1和它本身能被整除的数，不包括1
+
+2. 写一个函数printPrimes(a%, b%)，求出a~b之间的所有质数，print出来
+* 测试，a=0, b=100
+
+
+讲到115页
+
+
+
+
+
+
+
