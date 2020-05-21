@@ -1,0 +1,135 @@
+ch 05
+
+1 自定义数据类型
+
+
+(1)系统定义的数据类型：Integer, Double, Long
+
+(2) 自己可以定义新的数据类型
+
+
+Type StudType
+    No As Integer			' 学号
+    Name As String * 20		' 姓名
+    Sex As String * 1		' 性别
+    Mark(1 To 4) As Single	' 4门课程成绩
+    Total  As Single		' 总分
+End Type
+
+
+Type Box
+    Width As Integer
+    Height As Integer
+End Type
+
+Dim b1 as Box
+b1.Width = 5
+b1.Height = 6
+
+
+(3) 自己定义数据类型的基本用法
+
+
+
+Private Type Box
+    Width As Integer
+    Height As Integer
+End Type
+
+
+Private Sub Form_Click()
+
+    Dim b1 As Box
+    Dim b2 As Box
+    Dim b3 As Box
+    
+    
+    b1.Height = 5
+    b1.Width = 2
+    b2.Height = 4
+    b2.Width = 6
+    
+    
+    b3.Height = b1.Height + b2.Height
+    b3.Width = b1.Width + b2.Width
+    
+    Print b3.Height
+    Print b3.Width
+    
+     
+    
+End Sub
+
+2. 统计字符串中的字符出现次数
+
+
+Dim Text1 As String
+Dim i As Integer
+Dim j As Integer
+Dim c As String
+
+
+Text1 = "hello my vb programming"
+Dim a(0 To 26) As Integer' a的下标值表示字母再字母表中的位置，a(i)的值表示字母表中第i个字母出现次数为a(i)
+Dim le As Integer
+le = Len(Text1)
+
+
+
+For i = 1 To le
+  c = UCase(Mid(Text1, i, 1))
+  If c >= "A" And c <= "Z" Then
+      j = Asc(c) - 65 + 1
+      a(j) = a(j) + 1
+  End If
+Next i
+
+
+3. 练习
+
+给定一个数组，数组中的数据值都在0~50之间，比如b = array(1,4,6,7,11,4,6,7,48)
+统计b中的每个数字出现了多少次？
+
+4. 冒泡排序：bubble sort
+
+数组： [4,7,5,2,9,6]
+
+核心思想：两两比较，把大的那个数，往后交换
+
+
+For i = 0 To n - 1 Step 1
+
+    For j = 0 To n - i - 1 Step 1
+    
+        If a(j) > a(j + 1) Then
+            t = a(j)
+            a(j) = a(j + 1)
+            a(j + 1) = t
+            
+        End If
+    
+    Next j
+
+Next i
+
+升序排序： [2,4,5,6,7,9]
+
+
+
+5. 生成10个10~50之间的随机整数（包括10和50），放到数组里，并求出最大值和最大值所在的位置
+ Int(Rnd *41)+10
+
+输入要生成的随机数个数，定义动态数组
+
+Dim a() As Integer      '声明数组时，不指定数组大小
+n = InputBox("array-length")
+ReDim a(n)
+
+
+
+习题
+1. 给定一个数组 a = [2,4,6,8,6,5,3,7]，求a中第三大的数据
+2. 用冒泡排序，做降序排序，输出排序前后的结果
+3. 输入要生成的随机数个数，定义动态数组，生成35~86之间的整数。用冒泡排序，对数组排序后输出
+
+
