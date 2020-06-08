@@ -1,0 +1,258 @@
+第六章   过    程
+
+1. function定义
+
+（1）工具->添加过程
+
+（2）没有参数，没有返回值
+
+Private Sub Form_Click()
+    myfun
+End Sub
+
+
+Public Function myfun()
+    Print "hello my func"
+End Function
+
+（3）有1个参数，没有返回值
+
+Private Sub Form_Click()
+    myfun (7)
+End Sub
+
+Public Function myfun(x As Integer)
+    Print "hello my func "
+    Print x
+    
+End Function
+
+
+
+
+
+（4）有参数，有返回值
+
+Private Function myfun(x As Integer) As Integer
+    Print "hello my func "
+    Print x
+    myfun = 666
+End Function
+
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    x = 7
+    y = myfun(x)
+    Print y
+End Sub
+
+
+（5）有多个参数，有返回值
+Private Function myfun(x%, y%) As Integer
+    myfun = x + y
+End Function
+
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    Dim z As Integer
+    
+    x = 2
+    y = 4
+    z = myfun(x, y)
+    Print z
+End Sub
+
+
+练习：写一个函数，输入参数为x，返回值为1+2+3+...+x的值
+
+
+
+
+
+（6）有参数，有返回值，简写
+
+Private Function myfun(x%) As Integer
+相当于
+Private Function myfun(x As Integer) As Integer
+
+
+（7）练习：写一个函数myMin，参数为两个integer x,y 
+返回最小值
+
+
+Private Function mymin(x%, y%) As Integer
+    If x < y Then
+        mymin = x
+    Else
+        mymin = y
+    End If
+End Function
+
+Private Sub Form_Click()
+    Dim x As Integer
+    Dim y As Integer
+    Dim z As Integer
+    
+    x = 2
+    y = 4
+    Print mymin(x, y)
+End Sub
+
+
+（8）使用函数，来完成3个数求最值
+法一：
+x = mymin(x, y)
+y = z
+x = mymin(x,y)
+法二：
+x = mymin( mymin(x,y), z)
+
+
+（9）定义一个函数，my3min(x%, y%, z%)要求这个函数中不能用到if
+
+
+
+2. 子过程
+
+(1) 定义与用法
+Private Sub Swaps(x%, y%)
+   Dim t As Integer
+   t = x
+   x = y
+   y = t
+End Sub
+
+Private Sub Form_Click()
+Dim a As Integer
+Dim b As Integer
+
+a = 5
+b = 1
+Call Swaps(a, b)
+Print a '1
+Print b '5
+
+End Sub
+
+
+（2）区别于function
+
+ 2.1 子过程要由call来调用
+ --- call func(a)
+ 2.2 子过程没有返回值
+ 2.3 函数的调用只能是这两种
+ --- print func(a)
+ --- c = func(a)
+ --- func(a) [X]
+
+(3) 把不同类型的数据，拼接到一起输出
+
+Print "a = " ; a; "," ; "b = "; b
+'分号隔开各个字段
+
+
+3. 函数的参数是数组
+
+
+（1）基本用法
+
+Private Function myfun(a() As Integer, i%) As Integer
+   myfun = a(i)
+End Function
+
+Private Sub Form_Click()
+Dim a(0 To 5) As Integer
+a(0) = 110
+a(1) = 111
+a(2) = 112
+a(3) = 113
+a(4) = 114
+a(5) = 115
+
+Dim x As Integer
+Dim i As Integer
+i = 2
+x = myfun(a, i)
+Print "a("; i; ")="; x
+
+End Sub
+
+
+
+（2）练习：写一个函数 getArraySize()
+-- 输入：一个integer数组
+-- 输出：数组中一共有几个数据
+
+
+（3）总结：函数最终要的三个部分
+--- 输入：有多少个参数，分别为什么类型
+--- 输出：输出的类型
+--- 逻辑
+
+4. 加Private关键字的过程，只能被定义的窗体或模块中的过程调用
+public可以被全局调用，比如
+
+Form2中
+
+Public Function f2() As Integer
+    f2 = 123
+End Function
+
+Form1中调用它
+
+Form2.f2()
+
+
+5. 局部变量
+
+（1）定义在某个函数内部的变量
+
+
+练习：写一个函数，top-k
+输入：一个数组，一个k值
+输出：数组中第k大的值
+
+
+getMaxValue(a, k)
+
+例如：[1,3,5,2,6,4]
+第一大：6
+第二大：5
+
+思路：先冒泡排序，再找
+
+
+讲到 128 页
+
+
+习题：getMaxValue(a, start, end, k)
+- 输入
+-- 数组a
+-- a的起使下标
+-- a的终止下标
+-- k integer
+
+- 输出： a的start到end的第k个最大值
+
+
+例如
+
+a = [1,3,5,7,9,2,4,6,8]
+
+getMaxValue(a, 2, 6, 3)
+[5,7,9,2,4] 中第3大的数：5
+
+要求：
+（1）数据交换用子过程来写，在函数中调用这个子过程
+（2）对于不合理的输入值，报错（msgbox）
+-- start>end
+-- start<0
+-- k>end-start+1
+
+
+
+
